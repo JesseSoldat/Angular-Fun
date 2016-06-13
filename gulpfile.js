@@ -10,10 +10,6 @@ var notify  = require('gulp-notify');
 var uglify = require('gulp-uglify');
 var server  = require('gulp-server-livereload');
 var fontAwesome = require('node-font-awesome');
-var jshint = require('gulp-jshint');
-var stylish = require('jshint-stylish');
-var htmlhint = require('gulp-htmlhint');
-var jscs = require('gulp-jscs');
 var watch = require('gulp-watch'); // A Better File Watcher
 
 // Set up Foundation
@@ -70,13 +66,14 @@ gulp.task('browserify', function() {
 });
 
 
+
+
 gulp.task('watch', function() {
   watch('./sass/**/*.scss', function () {  
     gulp.start('sass'); 
   });
   watch(['./js/**/*.js', './package.json'], function () {
     gulp.start('browserify');
-    gulp.start('browserify-test');
   });
  
 });
