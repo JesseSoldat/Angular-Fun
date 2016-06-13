@@ -2,6 +2,38 @@
   color: blue; }
 
 body {
-  background-color: yellow; }
+  background-color: lightgrey; }
+
+/*BEGIN sellForm.controller */
+#itemTitle {
+  width: 80%;
+  margin: 4% auto; }
+
+#sellForm > div {
+  clear: both;
+  width: 80%;
+  margin: 0 auto; }
+  #sellForm > div label {
+    float: left;
+    width: 50%;
+    padding: 1%;
+    margin: 1%; }
+  #sellForm > div input {
+    float: left;
+    width: 70%;
+    padding: 1%;
+    margin: 1%; }
+  #sellForm > div textarea {
+    padding: 5%;
+    margin: 1%;
+    width: 60%;
+    clear: both;
+    float: left; }
+  #sellForm > div button {
+    float: left;
+    margin: 2%;
+    padding: 1%; }
+
+/*END sellForm.controller */
 
 /*# sourceMappingURL=main.css.map */

@@ -15,6 +15,13 @@ var config = function config($stateProvider, $urlRouterProvider) {
 		url: '/',
 		controller: 'HomeController',
 		templateUrl: 'templates/home.tpl.html'
+	}).state('test', {
+		url: '/test',
+		templateUrl: 'templates/test.tpl.html'
+	}).state('sellform', {
+		url: '/sell',
+		controller: 'SellFormController',
+		templateUrl: 'templates/sellform.tpl.html'
 	});
 };
 
@@ -41,6 +48,24 @@ module.exports = exports['default'];
 },{}],3:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
+var SellFormController = function SellFormController($scope) {
+
+	$scope.submitForm = function (object) {
+		console.log(object);
+	};
+};
+
+SellFormController.$inject = ['$scope'];
+
+exports['default'] = SellFormController;
+module.exports = exports['default'];
+
+},{}],4:[function(require,module,exports){
+'use strict';
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _angular = require('angular');
@@ -53,17 +78,21 @@ var _controllersHomeController = require('./controllers/home.controller');
 
 var _controllersHomeController2 = _interopRequireDefault(_controllersHomeController);
 
+var _controllersSellFormController = require('./controllers/sellForm.controller');
+
+var _controllersSellFormController2 = _interopRequireDefault(_controllersSellFormController);
+
 var _config = require('./config');
 
 var _config2 = _interopRequireDefault(_config);
 
-var test = 'Are you working NOW please?';
+var test = 'Are you working NOW?';
 
 console.log(test);
 
-_angular2['default'].module('app', ['ui.router']).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']);
+_angular2['default'].module('app', ['ui.router']).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('SellFormController', _controllersSellFormController2['default']);
 
-},{"./config":1,"./controllers/home.controller":2,"angular":6,"angular-ui-router":4}],4:[function(require,module,exports){
+},{"./config":1,"./controllers/home.controller":2,"./controllers/sellForm.controller":3,"angular":7,"angular-ui-router":5}],5:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.18
@@ -4603,7 +4632,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.6
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -35627,11 +35656,11 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":5}]},{},[3])
+},{"./angular":6}]},{},[4])
 
 
 //# sourceMappingURL=main.js.map

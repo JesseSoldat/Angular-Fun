@@ -3,5 +3,49 @@
 }
 
 body {
-	background-color: yellow;
+	background-color: lightgrey;
 }
+
+/*BEGIN sellForm.controller */
+
+#itemTitle {
+	width: 80%;
+	margin: 4% auto;
+}
+
+#sellForm > div {
+	clear: both;
+	width: 80%;
+	margin: 0 auto;
+	
+
+	label {
+		float: left;
+		width: 50%;
+		padding: 1%;
+		margin: 1%;
+
+	}
+	input {
+		float: left;
+		width: 70%;
+		padding: 1%;
+		margin: 1%;
+	}
+	textarea {
+		padding: 5%;
+		margin: 1%;
+		width: 60%;
+		clear: both;
+		float: left;
+	}
+	button {
+		
+		float: left;
+		margin: 2%;
+		padding: 1%;
+		
+	}
+}
+
+/*END sellForm.controller */

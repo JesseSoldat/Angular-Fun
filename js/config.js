@@ -11,6 +11,15 @@ let config = function($stateProvider, $urlRouterProvider) {
 			url: '/',
 			controller: 'HomeController',
 			templateUrl: 'templates/home.tpl.html'
+		})
+		.state('test', {
+			url: '/test',
+			templateUrl: 'templates/test.tpl.html'
+		})
+		.state('sellform', {
+			url: '/sell',
+			controller: 'SellFormController',
+			templateUrl: 'templates/sellform.tpl.html'
 		});
 
 };

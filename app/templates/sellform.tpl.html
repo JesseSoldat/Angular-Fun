@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sell Items</title>
+</head>
+<body>
+<h3 id="itemTitle">Item for Sale</h3>
+<hr />
+<form id="sellForm" ng-submit="submitForm(item)">
+	<div>
+		<label>Item Name</label>
+		<input type="text" ng-model="item.Name"/>
+	</div>
+	<br />
+	<div>
+		<label>Item Price</label>
+		<input type="text" ng-model="item.Price" />
+	</div>
+	<br />
+	<div>
+		<label>Contact</label>
+		<input type="text" ng-model="item.Contact">		
+	</div>
+	<br />
+	<div>
+		<label>Item Description</label>
+		<textarea type="text" ng-model="item.Description"></textarea>
+	</div>
+	<br />
+	
+	<br />
+	<div>
+		<button>Submit</button>
+	</div>
+</form>
+
+</body>
+</html>
