@@ -2,9 +2,21 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-  value: true
+	value: true
 });
-var config = function config($stateProvider, $urlRouterProvider) {};
+var config = function config($stateProvider, $urlRouterProvider) {
+
+	$urlRouterProvider.otherwise('/');
+
+	$stateProvider.state('root', {
+		abstract: true,
+		templateUrl: 'templates/layout.tpl.html'
+	}).state('root.home', {
+		url: '/',
+		controller: 'HomeController',
+		templateUrl: 'templates/home.tpl.html'
+	});
+};
 
 config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
