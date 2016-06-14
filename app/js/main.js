@@ -22,6 +22,10 @@ var config = function config($stateProvider, $urlRouterProvider) {
 		url: '/sell',
 		controller: 'SellFormController',
 		templateUrl: 'templates/sellform.tpl.html'
+	}).state('selllist', {
+		url: '/selllist',
+		controller: 'SellListController',
+		templateUrl: 'templates/forsalelist.tpl.html'
 	});
 };
 
@@ -71,7 +75,7 @@ var SellFormController = function SellFormController($scope, $firebaseObject) {
 	$scope.submitForm = function (obj) {
 		console.log(obj);
 
-		writeUserData(5, obj.Name, obj.Price, obj.Contact, obj.Description);
+		writeUserData(1, obj.Name, obj.Price, obj.Contact, obj.Description);
 	};
 };
 
@@ -81,6 +85,36 @@ exports['default'] = SellFormController;
 module.exports = exports['default'];
 
 },{}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var SellListController = function SellListController($scope, $firebaseObject) {
+
+  var ref = firebase.database().ref();
+
+  $scope.data = $firebaseObject(ref);
+
+  var ref = firebase.database().ref('sellers/').on('value', function (snapshot) {
+
+    var payload = snapshot.val();
+    console.log(payload);
+    var dataArr = [];
+    for (var prop in payload) {
+      dataArr.push(payload[prop]);
+    }
+    console.log(dataArr);
+    $scope.items = dataArr;
+  });
+};
+
+SellListController.$inject = ['$scope', '$firebaseObject'];
+
+exports['default'] = SellListController;
+module.exports = exports['default'];
+
+},{}],5:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -107,6 +141,10 @@ var _controllersSellFormController = require('./controllers/sellForm.controller'
 
 var _controllersSellFormController2 = _interopRequireDefault(_controllersSellFormController);
 
+var _controllersSellListController = require('./controllers/sellList.controller');
+
+var _controllersSellListController2 = _interopRequireDefault(_controllersSellListController);
+
 var _config = require('./config');
 
 var _config2 = _interopRequireDefault(_config);
@@ -123,9 +161,9 @@ var test = 'Are you working NOW?';
 
 // console.log(test);
 
-_angular2['default'].module('app', ['ui.router', 'firebase']).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('SellFormController', _controllersSellFormController2['default']);
+_angular2['default'].module('app', ['ui.router', 'firebase']).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('SellFormController', _controllersSellFormController2['default']).controller('SellListController', _controllersSellListController2['default']);
 
-},{"./config":1,"./controllers/home.controller":2,"./controllers/sellForm.controller":3,"angular":7,"angular-ui-router":5,"angularfire":9,"firebase":10}],5:[function(require,module,exports){
+},{"./config":1,"./controllers/home.controller":2,"./controllers/sellForm.controller":3,"./controllers/sellList.controller":4,"angular":8,"angular-ui-router":6,"angularfire":10,"firebase":11}],6:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.18
@@ -4665,7 +4703,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.6
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -35689,11 +35727,11 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":6}],8:[function(require,module,exports){
+},{"./angular":7}],9:[function(require,module,exports){
 /*!
  * AngularFire is the officially supported AngularJS binding for Firebase. Firebase
  * is a full backend so you don't need servers to build your Angular app. AngularFire
@@ -37952,7 +37990,7 @@ if ( typeof Object.getPrototypeOf !== "function" ) {
     }
 })();
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 // Make sure dependencies are loaded on the window
 require('angular');
 require('firebase');
@@ -37963,7 +38001,7 @@ require('./dist/angularfire');
 // Export the module name from the Angular module
 module.exports = 'firebase';
 
-},{"./dist/angularfire":8,"angular":7,"firebase":10}],10:[function(require,module,exports){
+},{"./dist/angularfire":9,"angular":8,"firebase":11}],11:[function(require,module,exports){
 /**
  *  Firebase libraries for browser - npm package.
  *
@@ -37974,7 +38012,7 @@ module.exports = 'firebase';
 require('./firebase');
 module.exports = firebase;
 
-},{"./firebase":11}],11:[function(require,module,exports){
+},{"./firebase":12}],12:[function(require,module,exports){
 (function (global){
 /*! @license Firebase v3.0.4
     Build: 3.0.4-rc.3
@@ -38541,7 +38579,7 @@ ra.STATE_CHANGED="state_changed";sa.RUNNING="running";sa.PAUSED="paused";sa.SUCC
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}]},{},[4])
+},{}]},{},[5])
 
 
 //# sourceMappingURL=main.js.map

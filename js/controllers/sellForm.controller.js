@@ -19,7 +19,9 @@ let SellFormController = function($scope, $firebaseObject) {
   	$scope.submitForm = function(obj) {
   		console.log(obj);
 
-  		writeUserData(5, obj.Name, obj.Price, obj.Contact, obj.Description);
+  		writeUserData(1, obj.Name, obj.Price, obj.Contact, obj.Description);
+
+  		
 
   	};
 
