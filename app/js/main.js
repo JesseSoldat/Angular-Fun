@@ -57,7 +57,22 @@ var SellFormController = function SellFormController($scope, $firebaseObject) {
 
 	$scope.data = $firebaseObject(ref);
 
-	console.log($scope.data);
+	// console.log($scope.data);
+
+	function writeUserData(userId, name, price, contact, description) {
+		firebase.database().ref('sellers/' + userId).set({
+			name: name,
+			price: price,
+			contact: contact,
+			description: description
+		});
+	}
+
+	$scope.submitForm = function (obj) {
+		console.log(obj);
+
+		writeUserData(5, obj.Name, obj.Price, obj.Contact, obj.Description);
+	};
 };
 
 SellFormController.$inject = ['$scope', '$firebaseObject'];
@@ -76,6 +91,14 @@ var _angular2 = _interopRequireDefault(_angular);
 
 require('angular-ui-router');
 
+var _firebase = require('firebase');
+
+var _firebase2 = _interopRequireDefault(_firebase);
+
+var _angularfire = require('angularfire');
+
+var _angularfire2 = _interopRequireDefault(_angularfire);
+
 var _controllersHomeController = require('./controllers/home.controller');
 
 var _controllersHomeController2 = _interopRequireDefault(_controllersHomeController);
@@ -87,12 +110,6 @@ var _controllersSellFormController2 = _interopRequireDefault(_controllersSellFor
 var _config = require('./config');
 
 var _config2 = _interopRequireDefault(_config);
-
-var _firebase = require('firebase');
-
-var _firebase2 = _interopRequireDefault(_firebase);
-
-require('angularfire');
 
 var appConfig = {
   apiKey: "AIzaSyCRo_w0-W7GihV6P5hdy2M6AtknRRf8rEA",

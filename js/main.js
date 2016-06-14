@@ -1,15 +1,13 @@
 import angular from 'angular';
 import 'angular-ui-router';
 
-
+import firebase from 'firebase';
+import angularfire from 'angularfire';
 
 import HomeController from './controllers/home.controller';
 import SellFormController from './controllers/sellForm.controller';
 
 import config from './config';
-
-import firebase from 'firebase';
-import 'angularfire';
 
 
 var appConfig = {
