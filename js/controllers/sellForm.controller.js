@@ -1,11 +1,14 @@
-let SellFormController = function($scope) {
+let SellFormController = function($scope, $firebaseObject) {
 	
-	$scope.submitForm = function(object) {
-		console.log(object);
-	}
+	var ref = firebase.database().ref();
+	
+	$scope.data = $firebaseObject(ref);
+
+	console.log($scope.data);
 };
 
-SellFormController.$inject = ['$scope'];
+SellFormController.$inject = ['$scope','$firebaseObject'];
 
 export default SellFormController;
+
 
