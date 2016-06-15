@@ -16,15 +16,20 @@ let config = function($stateProvider, $urlRouterProvider) {
 			url: '/test',
 			templateUrl: 'templates/test.tpl.html'
 		})
-		.state('sellform', {
+		.state('root.sellform', {
 			url: '/sell',
 			controller: 'SellFormController',
 			templateUrl: 'templates/sellform.tpl.html'
 		})
-		.state('selllist', {
+		.state('root.selllist', {
 			url: '/selllist',
 			controller: 'SellListController',
 			templateUrl: 'templates/forsalelist.tpl.html'
+		})
+		.state('root.singleItem', {
+			url: '/single/:name',
+			controller: 'SingleItemController',
+			templateUrl: 'templates/single.tpl.html'
 		});
 
 };

@@ -6,6 +6,9 @@ body {
 	background-color: lightgrey;
 }
 /*BEGIN forsalelist.tpl*/
+#forSaleTitle {
+	margin-left: 25px;
+}
 .itemsContainer {
 	width: 25%;
 	float: left;
@@ -24,12 +27,7 @@ body {
 			
 
 		}
-
-
-
 	}
-
-
 }
 /*END forsalelist.tpl*/
 

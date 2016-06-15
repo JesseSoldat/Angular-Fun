@@ -4,8 +4,9 @@
 	<title>For Sale Listing</title>
 </head>
 <body>
-<h3>For Sale</h3>
+<h3 id="forSaleTitle">For Sale</h3>
 <div ng-repeat="item in items">
+	
 	<div class="itemsContainer">
 		<div class="itemContainer">
 			<label>item: </label> <h4>{{item.name}}</h4>
@@ -18,9 +19,12 @@
 		</div>
 		<div class="itemContainer">
 			<label>description: </label><h4>{{item.description}}</h4>	
+		</div>	
+		<div>
+			<a href="#/single/{{item.name}}">More Details</a>
 		</div>
-		
 	</div>
+
 
 </div>	
 		

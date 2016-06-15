@@ -7,6 +7,7 @@ import angularfire from 'angularfire';
 import HomeController from './controllers/home.controller';
 import SellFormController from './controllers/sellForm.controller';
 import SellListController from './controllers/sellList.controller';
+import SingleItemController from './controllers/singleItem.controller';
 
 
 import config from './config';
@@ -32,6 +33,6 @@ angular
 	.controller('HomeController', HomeController)
 	.controller('SellFormController', SellFormController)
 	.controller('SellListController', SellListController)
-
+	.controller('SingleItemController', SingleItemController)
 
 	;
