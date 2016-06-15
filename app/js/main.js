@@ -99,7 +99,7 @@ var SellListController = function SellListController($scope, $firebaseObject) {
   var ref = firebase.database().ref('sellers/').on('value', function (snapshot) {
 
     var payload = snapshot.val();
-    console.log(payload);
+    // console.log(payload);
     var dataArr = [];
     for (var prop in payload) {
       dataArr.push(payload[prop]);

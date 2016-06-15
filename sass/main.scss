@@ -5,9 +5,36 @@
 body {
 	background-color: lightgrey;
 }
+/*BEGIN forsalelist.tpl*/
+.itemsContainer {
+	width: 25%;
+	float: left;
+	background-color: pink;
+	margin: 2%;
+	border: 1px solid black;
+	/*text-align: center;*/
+	.itemContainer {
+		width: 100%;
+		label {
+			color: red;
+			float: left;
+			padding: 0 15px;
+		}
+		h4 {
+			
 
-/*BEGIN sellForm.controller */
+		}
 
+
+
+	}
+
+
+}
+/*END forsalelist.tpl*/
+
+
+/*BEGIN sellForm.tpl */
 #itemTitle {
 	width: 80%;
 	margin: 4% auto;
@@ -48,4 +75,4 @@ body {
 	}
 }
 
-/*END sellForm.controller */
+/*END sellForm.tpl */
