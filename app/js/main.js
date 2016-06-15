@@ -137,7 +137,14 @@ var SingleItemController = function SingleItemController($scope, $stateParams, S
 	$scope.data = $firebaseObject(ref);
 
 	var id = $stateParams.id;
-	// console.log(id);
+
+	//TEST
+	// var results = SingleItemService.getItem(id);
+	// console.log(results);
+
+	//   $scope.item = results;
+
+	//TEST
 
 	var ref = firebase.database().ref('sellers/').on('value', function (snapshot) {
 
@@ -226,17 +233,22 @@ var test = 'Are you working NOW?';
 _angular2['default'].module('app', ['ui.router', 'firebase']).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('SellFormController', _controllersSellFormController2['default']).controller('SellListController', _controllersSellListController2['default']).controller('SingleItemController', _controllersSingleItemController2['default']).service('SingleItemService', _servicesSingleItemServiceJs2['default']);
 
 },{"./config":1,"./controllers/home.controller":2,"./controllers/sellForm.controller":3,"./controllers/sellList.controller":4,"./controllers/singleItem.controller":5,"./services/singleItem.service.js":7,"angular":10,"angular-ui-router":8,"angularfire":12,"firebase":13}],7:[function(require,module,exports){
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
 	value: true
 });
-var SingleItemService = function SingleItemService() {};
+var SingleItemService = function SingleItemService($firebaseObject) {
 
-SingleItemService.$inject = [];
+	// this.getItem = function(id) {
 
-exports["default"] = SingleItemService;
-module.exports = exports["default"];
+	// }
+};
+
+SingleItemService.$inject = ['$firebaseObject'];
+
+exports['default'] = SingleItemService;
+module.exports = exports['default'];
 
 },{}],8:[function(require,module,exports){
 /**

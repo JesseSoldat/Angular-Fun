@@ -3,11 +3,18 @@ let SingleItemController = function($scope, $stateParams, SingleItemService, $fi
 	var ref = firebase.database().ref();
 	
 	$scope.data = $firebaseObject(ref);
-	
-	
+
 	let id = $stateParams.id;
-	// console.log(id);
 	
+	//TEST
+	// var results = SingleItemService.getItem(id);
+	// console.log(results);
+
+	//   $scope.item = results; 
+
+
+
+	//TEST
 
 	var ref = firebase.database().ref('sellers/').on('value', function(snapshot) {
 

@@ -4,12 +4,26 @@
 	<title></title>
 </head>
 <body>
-<h4>You are interested in...</h4>
-<h4>{{item.name}}</h4>
-<h4>{{item.price}}</h4>
-<h4>{{item.contact}}</h4>
-<h4>{{item.description}}</h4>
-<img ng-src="{{item.url}}" width="50%"/>
+<div id="singleContainer">
+	<h3>You are interested in...</h3>
+
+	<div class="singItemContainer">
+		<label>Item:</label><h4>{{item.name}}</h4>
+	</div>
+	<div class="singItemContainer">
+		<label>Price:</label><h4>{{item.price}}</h4>
+	</div>
+	<div class="singItemContainer">
+		<label>Contact:</label><h4>{{item.contact}}</h4>
+	</div>
+	<div class="singItemContainer">
+		<label>Description:</label><h4>{{item.description}}</h4>
+	</div>
+</div>
+<div id="singleImage">
+	<img ng-src="{{item.url}}" width="50%"/>
+</div>
+
 
 
 

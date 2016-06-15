@@ -1,11 +1,11 @@
-let SingleItemService = function() {
+let SingleItemService = function($firebaseObject) {
 
+	// this.getItem = function(id) {
 	
-
-
-
+		
+	// }
 };
 
-SingleItemService.$inject = [];
+SingleItemService.$inject = ['$firebaseObject'];
 
 export default SingleItemService;
