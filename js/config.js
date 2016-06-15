@@ -27,7 +27,7 @@ let config = function($stateProvider, $urlRouterProvider) {
 			templateUrl: 'templates/forsalelist.tpl.html'
 		})
 		.state('root.singleItem', {
-			url: '/single/:name',
+			url: '/single/:id',
 			controller: 'SingleItemController',
 			templateUrl: 'templates/single.tpl.html'
 		});

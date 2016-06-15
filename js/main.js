@@ -8,7 +8,7 @@ import HomeController from './controllers/home.controller';
 import SellFormController from './controllers/sellForm.controller';
 import SellListController from './controllers/sellList.controller';
 import SingleItemController from './controllers/singleItem.controller';
-
+import SingleItemService from './services/singleItem.service.js';
 
 import config from './config';
 
@@ -34,5 +34,5 @@ angular
 	.controller('SellFormController', SellFormController)
 	.controller('SellListController', SellListController)
 	.controller('SingleItemController', SingleItemController)
-
+	.service('SingleItemService', SingleItemService)
 	;

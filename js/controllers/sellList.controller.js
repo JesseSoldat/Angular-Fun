@@ -12,10 +12,10 @@ let SellListController = function($scope, $firebaseObject) {
   	var dataArr = [];
   	for (var prop in payload) {
   	dataArr.push(payload[prop]);
-}
+  }
   console.log(dataArr);
   	$scope.items = dataArr;
-});
+  });
 };
 
 

@@ -27,7 +27,7 @@ var config = function config($stateProvider, $urlRouterProvider) {
 		controller: 'SellListController',
 		templateUrl: 'templates/forsalelist.tpl.html'
 	}).state('root.singleItem', {
-		url: '/single/:name',
+		url: '/single/:id',
 		controller: 'SingleItemController',
 		templateUrl: 'templates/single.tpl.html'
 	});
@@ -67,13 +67,14 @@ var SellFormController = function SellFormController($scope, $firebaseObject) {
 
 	// console.log($scope.data);
 
-	function writeUserData(userId, id, name, price, contact, description) {
+	function writeUserData(userId, id, name, price, contact, description, url) {
 		firebase.database().ref('sellers/' + userId).set({
 			id: id,
 			name: name,
 			price: price,
 			contact: contact,
-			description: description
+			description: description,
+			url: url
 		});
 	}
 
@@ -82,9 +83,9 @@ var SellFormController = function SellFormController($scope, $firebaseObject) {
 
 		var id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase();
 
-		console.log(id);
+		// console.log(id);
 
-		writeUserData(2, id, obj.Name, obj.Price, obj.Contact, obj.Description);
+		writeUserData(id, id, obj.Name, obj.Price, obj.Contact, obj.Description, obj.url);
 	};
 };
 
@@ -129,12 +130,40 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
 	value: true
 });
-var SingleItemController = function SingleItemController($scope, $stateParams) {
-	$scope.test = 'TEST';
-	console.log($stateParams.name);
+var SingleItemController = function SingleItemController($scope, $stateParams, SingleItemService, $firebaseObject) {
+
+	var ref = firebase.database().ref();
+
+	$scope.data = $firebaseObject(ref);
+
+	var id = $stateParams.id;
+	// console.log(id);
+
+	var ref = firebase.database().ref('sellers/').on('value', function (snapshot) {
+
+		var payload = snapshot.val();
+
+		var dataArr = [];
+
+		for (var prop in payload) {
+
+			if (prop === id) {
+				// console.log('Match');
+				dataArr.push(payload[prop]);
+			} else {
+				// console.log('No Match');
+			}
+		}
+		// console.log(dataArr);
+		var item = dataArr.pop();
+		var results = {};
+		results = item;
+		console.log(results);
+		$scope.item = results;
+	});
 };
 
-SingleItemController.$inject = ['$scope', '$stateParams'];
+SingleItemController.$inject = ['$scope', '$stateParams', 'SingleItemService', '$firebaseObject'];
 
 exports['default'] = SingleItemController;
 module.exports = exports['default'];
@@ -174,6 +203,10 @@ var _controllersSingleItemController = require('./controllers/singleItem.control
 
 var _controllersSingleItemController2 = _interopRequireDefault(_controllersSingleItemController);
 
+var _servicesSingleItemServiceJs = require('./services/singleItem.service.js');
+
+var _servicesSingleItemServiceJs2 = _interopRequireDefault(_servicesSingleItemServiceJs);
+
 var _config = require('./config');
 
 var _config2 = _interopRequireDefault(_config);
@@ -190,9 +223,22 @@ var test = 'Are you working NOW?';
 
 // console.log(test);
 
-_angular2['default'].module('app', ['ui.router', 'firebase']).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('SellFormController', _controllersSellFormController2['default']).controller('SellListController', _controllersSellListController2['default']).controller('SingleItemController', _controllersSingleItemController2['default']);
+_angular2['default'].module('app', ['ui.router', 'firebase']).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('SellFormController', _controllersSellFormController2['default']).controller('SellListController', _controllersSellListController2['default']).controller('SingleItemController', _controllersSingleItemController2['default']).service('SingleItemService', _servicesSingleItemServiceJs2['default']);
 
-},{"./config":1,"./controllers/home.controller":2,"./controllers/sellForm.controller":3,"./controllers/sellList.controller":4,"./controllers/singleItem.controller":5,"angular":9,"angular-ui-router":7,"angularfire":11,"firebase":12}],7:[function(require,module,exports){
+},{"./config":1,"./controllers/home.controller":2,"./controllers/sellForm.controller":3,"./controllers/sellList.controller":4,"./controllers/singleItem.controller":5,"./services/singleItem.service.js":7,"angular":10,"angular-ui-router":8,"angularfire":12,"firebase":13}],7:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var SingleItemService = function SingleItemService() {};
+
+SingleItemService.$inject = [];
+
+exports["default"] = SingleItemService;
+module.exports = exports["default"];
+
+},{}],8:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.18
@@ -4732,7 +4778,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.6
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -35756,11 +35802,11 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":8}],10:[function(require,module,exports){
+},{"./angular":9}],11:[function(require,module,exports){
 /*!
  * AngularFire is the officially supported AngularJS binding for Firebase. Firebase
  * is a full backend so you don't need servers to build your Angular app. AngularFire
@@ -38019,7 +38065,7 @@ if ( typeof Object.getPrototypeOf !== "function" ) {
     }
 })();
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 // Make sure dependencies are loaded on the window
 require('angular');
 require('firebase');
@@ -38030,7 +38076,7 @@ require('./dist/angularfire');
 // Export the module name from the Angular module
 module.exports = 'firebase';
 
-},{"./dist/angularfire":10,"angular":9,"firebase":12}],12:[function(require,module,exports){
+},{"./dist/angularfire":11,"angular":10,"firebase":13}],13:[function(require,module,exports){
 /**
  *  Firebase libraries for browser - npm package.
  *
@@ -38041,7 +38087,7 @@ module.exports = 'firebase';
 require('./firebase');
 module.exports = firebase;
 
-},{"./firebase":13}],13:[function(require,module,exports){
+},{"./firebase":14}],14:[function(require,module,exports){
 (function (global){
 /*! @license Firebase v3.0.4
     Build: 3.0.4-rc.3

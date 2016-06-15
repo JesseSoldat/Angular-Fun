@@ -7,13 +7,14 @@ let SellFormController = function($scope, $firebaseObject) {
 
 	// console.log($scope.data);
 
-	function writeUserData( userId, id, name, price, contact, description) {
+	function writeUserData( userId, id, name, price, contact, description, url) {
 	  	firebase.database().ref('sellers/' + userId).set({
 	  	id: id,
 	    name: name,
 	    price: price,
 	    contact: contact,
-	    description: description
+	    description: description,
+	    url: url
   		});
   	}
   	
@@ -23,9 +24,9 @@ let SellFormController = function($scope, $firebaseObject) {
   		var id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase()
 
 	
-		console.log(id);
+		// console.log(id);
 
-  		writeUserData(2, id, obj.Name, obj.Price, obj.Contact, obj.Description);
+  		writeUserData(id, id, obj.Name, obj.Price, obj.Contact, obj.Description, obj.url);
 
   		
 
